@@ -16,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password','phone','address','pin','percent','dte','role','token',
+        'name', 'email', 'password','phone','address','pin','role','token',
     ];
 
     /**
@@ -34,5 +34,8 @@ class User extends Authenticatable
 
     public function sendVerificationEmail(){
         $this->notify(new VerifyEmail($this));
+    }
+    public function crop(){
+        return $this->hasMany('App\crop');
     }
 }

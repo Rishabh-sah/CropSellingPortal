@@ -3,20 +3,18 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Qualitative;
-use Illuminate\Support\Facades\Input;
-use Redirect;
-use View;
-use App\User;
+use App\Crop;
 
-class QualitativeController extends Controller
+class CropController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(){
+    public function index()
+    {
+        //
     }
 
     /**
@@ -37,29 +35,34 @@ class QualitativeController extends Controller
      */
     public function store(Request $request)
     {
-     //  return $request->all();
-       $rating = Qualitative::firstOrNew(['id' =>auth()->user()->id]);
-      $data= $request->all();
-      //$count=1;
-      $name=array_keys($data);
-      $count=count($name);
-        //return ($data);
-     //return $name;
-     for($d=2;$d<=$count-1;$d=$d+1)
-     // foreach($name as $n)
-      {
-            $rating->id=auth()->user()->id;
-            $f="SEC1_ANS".$name[$d-1];
-            $rating->$f = $data[$name[$d-1]];
-            echo $f." ";
-            echo $data[$name[$d-1]];    
-       }
-      //  $count=$count+1;
-       $rating->save();
+        $crop = new crop;
+        $crop->name= $request->input('name');
+        $crop->quantity=$request->input('quantity');
+        $crop->harvest_date=$request->input('harvest_date');
+        $crop->image=$request->input('image');
+        $crop->price=$request->input('price');
+        $crop->user_id=auth()->user()->id;
+        $crop->save();
+        return redirect('/farmer/home')->with('status','crop successfully added');
+    }
 
-       return redirect('/comprehension');
-     }
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        //
+    }
 
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
     public function edit($id)
     {
         //

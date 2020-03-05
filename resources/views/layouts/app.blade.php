@@ -67,6 +67,7 @@ filter: blur(5px);
 </style>
 </head>
 <body >
+
     <div id="app">
         <nav class="navbar navbar-default navbar-expand-md bg-primary shadow-sm">
             <div class="container">

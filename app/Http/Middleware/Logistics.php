@@ -2,7 +2,7 @@
 namespace App\Http\Middleware;
 use Auth;
 use Closure;
-class Student  
+class Logistics  
 {
   public function handle($request, Closure $next, $guard = null)
   {
@@ -13,7 +13,7 @@ class Student
             return redirect()->guest('login');
         }
 	} 
-    else if (Auth::guard($guard)->user()->role != 3) {
+    else if (Auth::guard($guard)->user()->role != 5) {
         return redirect()->to('/')->withError('Permission Denied');
     }
     return $next($request);

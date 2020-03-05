@@ -44,12 +44,10 @@ class RegisterController extends Controller
         return Validator::make($data, [
             
             'name' =>'required|min:2|max:50',
-            'email' =>'required|email',
+            'email' =>'email',
             'phone' =>'required|digits:10',
-            'address' =>'required|string|max:255',
-            'pin' =>'required|min:6|max:6',
-            'percent' =>'required|between:0,99.99',
-            'dte'=>'required|regex:/(^[a-zA-Z]{2}\d{8}$)/u',
+            'address' =>'string|max:255',
+            'pin' =>'min:6|max:6',
             'password' =>'required|min:6|max:20|confirmed',
             
         ],[
@@ -78,8 +76,6 @@ class RegisterController extends Controller
             'phone' =>$data['phone'],
             'address' =>$data['address'],
             'pin' =>$data['pin'],
-            'percent' =>$data['percent'],
-            'dte' =>$data['dte'],
             'role' => $data['role'],
             'password' =>bcrypt($data['password']),
             'token'=>str_random(26),

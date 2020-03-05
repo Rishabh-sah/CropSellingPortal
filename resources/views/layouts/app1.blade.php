@@ -18,7 +18,7 @@ content: '';
 position: fixed;
 width: 100vw;
 height: 100vh;
-background-image: url("images/build.png");
+/* background-image: url("images/build.png"); */
 background-position: center center;
 background-repeat: no-repeat;
 background-attachment: fixed;
@@ -32,6 +32,8 @@ filter: blur(5px);
     </style>
 </head>
 <body>
+
+
     <div id="app">
         <!-- <nav class="navbar navbar-default navbar-static-top"> -->
             <div class="container">
